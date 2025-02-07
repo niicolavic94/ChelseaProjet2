@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Histoire du Chelsea Fran Club.">
+    <meta name="keywords" content="Chelsea, FC, football, histoire, communauté">
+    <meta name="author" content="Chelsea Fran Club">
+    <title>Inscription - Chelsea Fran Club</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style/style.css"> <!-- Assurez-vous que le chemin est correct -->
+
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="accueil.html">
+                <img src="../images CLUB/Logos/LOGO_DU_SITE-removebg-preview - Copie.png" alt="Logo Chelsea Fran Club">
+            </a>
+        </div>
+        <h1>Chelsea Fran Club</h1>    
+        <div class="auth-buttons">
+            <a href="index.php">S'inscrire/ Se connecter</a>
+          
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="accueilv2.html">Accueil</a></li>
+            <li><a href="actu2.html">Actualités</a></li>
+            <li><a href="match.html">Match</a></li>
+            <li>
+                <a href="#">Club</a>
+                <ul class="dropdown">
+                    <li><a href="histoire.html">Notre Histoire</a></li>
+                    <li><a href="statistiques.html">Statistiques</a></li>
+                    <li><a href="effectif.html">Effectif</a></li>
+                    <li><a href="classement.html">Saison 24/25</a></li>
+                </ul>
+            </li>
+            <li><a href="compte.html">Compte</a></li>
+        </ul>
+    </nav>
+
+    
+    <main>
+        <h2>Inscription</h2>
+        <div class="form-container">
+            <form id="registrationForm">
+                <input type="text" id="username" placeholder="Nom d'utilisateur" required>
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="password" placeholder="Mot de passe" required>
+                <input type="password" id="confirmPassword" placeholder="Confirmer le mot de passe" required>
+                <button type="submit">S'inscrire</button>
+     <p style="margin-top: 30px; font-size: 16px; color:black;">
+                    Déjà inscrit ? <a href="connexion.html" style="color:whitesmoke; text-decoration: none; font-size: 15px;">Connecte toi ici</a>
+                </p></form>
+                <div class="message" id="message"></div>
+            
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-links">
+            <a href="mentionslegales.html">Mentions légales</a>
+            <a href="faq.html">Foire à questions</a>
+        </div>
+    </footer>
+
+    <script>
+        const form = document.getElementById('registrationForm');
+        const messageDiv = document.getElementById('message');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Correction ici
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            // Regex pour valider l'email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            // Regex pour valider le mot de passe (au moins 6 caractères)
+            const passwordRegex = /^.{6,}$/;
+
+            if (!emailRegex.test(email)) {
+                messageDiv.textContent = "L'email n'est pas valide.";
+                messageDiv .classList.add('error');
+                return;
+            }
+
+            if (!passwordRegex.test(password)) {
+                messageDiv.textContent = "Le mot de passe doit contenir au moins 6 caractères.";
+                messageDiv.classList.add('error');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                messageDiv.textContent = "Les mots de passe ne correspondent pas.";
+                messageDiv.classList.add('error');
+                return;
+            }
+
+            messageDiv.textContent = "Inscription réussie !";
+            messageDiv.classList.remove('error');
+            messageDiv.classList.add('success');
+            // Ici, vous pouvez ajouter le code pour envoyer les données au serveur
+        });
+    </script>
+</body>
+</html>
